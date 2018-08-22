@@ -3,6 +3,9 @@ import datetime as date
 
 
 class Block:
+    """
+    create blocks for block chain
+    """
     def __init__(self, index, timestamp, data, previous_hash):
         self.index = index
         self.timestamp = timestamp
@@ -20,6 +23,9 @@ class Block:
 
 
 class BlockChain:
+    """
+    block chain class, create genesis block and next blocks
+    """
     def __init__(self):
         self.init_block = Block(0, date.datetime.now(), "Genesis Block", "0")
         self.num_blocks = 0
@@ -40,6 +46,9 @@ class BlockChain:
 
     def get_blockchain(self):
         return self.blockchain
+
+    def get_block(self, index):
+        return self.blockchain[index]
 
     @staticmethod
     def print_block(block):
