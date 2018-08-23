@@ -53,12 +53,25 @@ class BlockChain:
     @staticmethod
     def print_block(block):
         print('------------start of block-----------\n')
+        print('previous hash  : ' + str(block.previous_hash) + '\n')
         print('index          : ' + str(block.index) + '\n')
         print('timestamp      : ' + str(block.timestamp) + '\n')
         print('data           : ' + str(block.data) + '\n')
-        print('previous hash  : ' + str(block.previous_hash) + '\n')
+        print('this hash      : ' + str(block.hash + '\n'))
         print('----------end of this block----------\n')
 
     def print_blockchain(self):
         for block in self.blockchain:
             self.print_block(block)
+
+    def validate_blockchain(self):
+        for i in range(1, self.num_blocks + 1):
+            if self.blockchain[i].previous_hash == self.blockchain[i-1].hash_block():
+                print('Block ' + str(i-1) + ' is validated!\n')
+            else:
+                print('Block ' + str(i-1) + ' is changed!\n')
+                return False
+        return True
+
+    def set_block(self, index, data):
+        self.blockchain[index].data = data

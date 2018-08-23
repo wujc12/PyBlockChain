@@ -14,4 +14,13 @@ for i in range(num_of_blocks_to_add):
     previous_block = next_block
 
 # print the whole block chain
-blockchain.print_blockchain()
+# blockchain.print_blockchain()
+
+# don't change block in the blockchain, and print the validation result
+bl = blockchain.validate_blockchain()
+print(bl)
+
+# change block in the blockchain, and print the validation result
+blockchain.set_block(4, 'Hey, I am block changed!')
+bl = blockchain.validate_blockchain()
+print(bl)
